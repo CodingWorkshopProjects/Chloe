@@ -1,0 +1,88 @@
+/* 
+ *  Ex_13 - Functions
+ *  A stand-alone morse code encoder which takes a 
+ *  Serial character input & convert it to morse code.
+ *  
+ *  LED 
+ *  -- GP12
+ *  
+ */
+
+
+char input;
+
+void setup() {
+   Serial.begin(115200); //set up serial library baud rate to 115200
+   delay(2000);
+   Serial.println("CEASAR ENCODER");
+}
+
+void loop() {
+   if(Serial.available()) { //if number of bytes (characters) available for reading
+      input = Serial.read();
+      Character(input);
+   }
+}
+void Character(char input) {
+  char _input = input;
+  _input = ((_input >= 'a') && (_input <= 'z')) ? _input - 32 : _input; //lower to upper case
+  
+  switch (_input) {
+    case 'A':
+      Serial.println('C');break;  // A in morseCode
+    case 'B':
+      Serial.println('D');break;
+    case 'C':
+      Serial.println('E'); break;
+    case 'D':
+      Serial.println('F');break;
+    case 'E':
+       Serial.println('G');break;
+    case 'F':
+    //abcdefghijklmnopqrstuvwxyz
+      Serial.println('H');break;
+    case 'G':
+      Serial.println('I');break;
+    case 'H':
+      Serial.println('J');break;
+    case 'I':
+      Serial.println('K');break;
+    case 'J':
+      Serial.println('L');break;
+    case 'K':
+      Serial.println('M');break;
+    case 'L':
+      Serial.println('N');break;
+    case 'M':
+      Serial.println('O');break;
+    case 'N':
+      Serial.println('P');break;
+    case 'O':
+      Serial.println('Q');break;
+    case 'P':
+      Serial.println('R');break;
+    case 'Q':
+      Serial.println('S');break;
+    case 'R':
+      Serial.println('T');break;
+    case 'S':
+      Serial.println('U');break;
+    case 'T':
+      Serial.println('V');break;
+    case 'U':
+      Serial.println('W');break;
+    case 'V':
+      Serial.println('X');break;
+    case 'W':
+      Serial.println('Y');break;
+    case 'X':
+      Serial.println('Z');break;
+    case 'Y':
+      Serial.println('A');break;
+    case 'Z':
+      Serial.println('B');break;
+  }
+}
+
+                    
+                
