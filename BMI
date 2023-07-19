@@ -1,0 +1,67 @@
+/* 
+ *  Ex_11 - Conditional
+ *  Simple communication through the Serial monitor.
+ *  
+ */
+// Retrieve the Heigh and Weight, do the calculations, return calculated data in BMI.
+
+String rcvString = "";
+float weight=0;
+float height = 0;
+float BMI= 0;
+
+void setup() {
+   Serial.begin(115200); //set up serial library baud rate to 115200
+   delay(2000);
+   Serial.println("Please enter your weight in kilograms and height in meters.");
+   
+}
+
+void loop() {
+    if(Serial.available()) { //if number of bytes (characters) available for reading
+      Serial.print("Your weight is"); //print I received
+      rcvString = Serial.readString();
+      weight = rcvString.toInt(); // read string until newline character
+      Serial.print(weight); 
+      Serial.println("kg");
+   }
+
+      if(Serial.available()) { //if number of bytes (characters) available for reading
+        Serial.print("Your height is"); //print I received
+        rcvString = Serial.readString();
+        height = rcvString.toInt(); // read string until newline character
+        Serial.print(height); 
+        Serial.println("m");
+      
+      
+      float BMI = weight/(height*height);
+      
+
+      if ((BMI < 16) && (BMI != 0)) {
+        Serial.println("Severely underweight");
+      }
+      else if ((BMI >= 16) && (BMI <= 18.4)) {
+        Serial.println("Underweight");
+      }
+      else if ((BMI >= 18.5) && (BMI <= 24.9)) {
+        Serial.println("Normal");
+      }
+      else if ((BMI >= 25.0) && (BMI <= 29.9)) {
+        Serial.println("Hello Casper!!");
+      }
+      else if ((BMI >=30.0) && (BMI <= 34.9)) {
+        Serial.println("Moderately obese");
+      }
+      else if ((BMI >= 35.0) && (BMI <= 39.9)) {
+        Serial.println("Severely Obese");
+      }
+      else if ((BMI >=40) && (BMI != 0)) {
+        Serial.println("Morbidly Obese");
+
+      Serial.println("");
+      Serial.println("Please enter your weight in kilograms and height in meters.");
+      }
+   }
+}
+                    
+                
