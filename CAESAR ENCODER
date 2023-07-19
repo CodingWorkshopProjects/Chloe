@@ -10,14 +10,23 @@
 
 
 char input;
-
-void setup() {
+int number
+  
+  void setup() {
    Serial.begin(115200); //set up serial library baud rate to 115200
    delay(2000);
    Serial.println("CEASAR ENCODER");
+  
+  String Letters[24] = {"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V"}
+   
+
 }
 
 void loop() {
+  Serial.println("what is the number key?");
+  int number = Serial.read();
+
+
    if(Serial.available()) { //if number of bytes (characters) available for reading
       input = Serial.read();
       Character(input);
@@ -26,6 +35,7 @@ void loop() {
 void Character(char input) {
   char _input = input;
   _input = ((_input >= 'a') && (_input <= 'z')) ? _input - 32 : _input; //lower to upper case
+  
   
   switch (_input) {
     case 'A':
